@@ -54,7 +54,13 @@ components:
           description: uuid
         company:
           type: object
-          description: 공고를 등록한 회사
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            region:
+              type: string
         position:
           type: string
           description: 채용포지션
@@ -79,7 +85,24 @@ components:
           description: 지원자 id
         recruitId:
           type: object
-          description: 지원할 채용공고
+          properties:
+            id:
+              type: string
+            company:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                region:
+                  type: string
+            position:
+              type: string
+            description:
+              type: string
+            stack:
+              type: string
     Error:
       type: object
       properties:
