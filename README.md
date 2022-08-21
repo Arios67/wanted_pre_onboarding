@@ -1,6 +1,6 @@
 # wanted_pre_onboarding <br>
 * 사용기술: nodeJS, express, mySQL, typeORM, swagger <br>
-* api-docs : url/api-docs <br>
+* api-docs : url/api-docs, https://drive.google.com/file/d/1_Lg0Zqro83xw4Jei04GlVutWHB0Lpxli/view?usp=sharing <br>
 * schema : <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![ㅅㅋㅁ](https://user-images.githubusercontent.com/81277145/185779461-e46c1941-6ed1-4ca7-9fc0-72450b2c66d5.png) <br><br>
 
