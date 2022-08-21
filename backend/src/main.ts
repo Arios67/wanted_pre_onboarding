@@ -23,7 +23,7 @@ const Mysqlconfig: ConnectionOptions = {
   username: "root",
   password: process.env.DB_PW,
   database: "myproject",
-  synchronize: false,
+  synchronize: true,
   logging: true,
   entities: ["src/entities/*.ts"],
 };
