@@ -1,0 +1,19 @@
+get:
+  summary: 채용공고 조회
+  tags:
+    - recruit
+
+  responses:
+    "200":
+      description: 등록된 채용공고 배열
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              example:
+                회사명: string
+                지역: string
+                채용포지션: string
+                사용기술: string

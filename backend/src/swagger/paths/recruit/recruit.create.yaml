@@ -1,0 +1,37 @@
+post:
+  summary: 새로운 채용공고 등록
+  tags:
+    - recruit
+
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            companyName:
+              type: string
+              description: 등록된 회사명
+            position:
+              type: string
+              description: 채용 포지션
+            description:
+              type: string
+              description: 공고 내용
+            stack:
+              type: string
+              description: 사용 기술
+          required:
+            - companyName
+            - position
+            - description
+            - stack
+        example:
+          companyName: string
+          position: string
+          description: string
+          stack: string
+
+  responses:
+    "200":
+      description: 채널 생성 성공

@@ -1,0 +1,34 @@
+put:
+  summary: 채용공고 수정
+  tags:
+    - recruit
+
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            recruitId:
+              type: string
+              description: 수정을 원하는 채용공고의 id
+            position:
+              type: string
+              description: 채용 포지션
+            description:
+              type: string
+              description: 공고 내용
+            stack:
+              type: string
+              description: 사용 기술
+          required:
+            - recruitId
+        example:
+          recruitId: string
+          position: string
+          description: string
+          stack: string
+
+  responses:
+    "200":
+      description: 채용공고 수정

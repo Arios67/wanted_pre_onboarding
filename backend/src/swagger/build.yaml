@@ -1,0 +1,294 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: wanted_pre_onboarding API docs
+  description: 백엔드 코스 - 4차 선발과제
+  license:
+    name: MIT
+servers:
+  - url: 'http://localhost:3000/'
+paths:
+  /user/apply:
+    post:
+      summary: 입사 지원
+      tags:
+        - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recruitId:
+                  type: string
+                  description: 지원할 채용공고의 id
+                userId:
+                  type: string
+                  description: 지원자 id
+              required:
+                - recruitId
+                - userId
+            example:
+              recruitId: string
+              userId: string
+      responses:
+        '200':
+          description: 입사 지원
+  /recruit/create:
+    post:
+      summary: 새로운 채용공고 등록
+      tags:
+        - recruit
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                companyName:
+                  type: string
+                  description: 등록된 회사명
+                position:
+                  type: string
+                  description: 채용 포지션
+                description:
+                  type: string
+                  description: 공고 내용
+                stack:
+                  type: string
+                  description: 사용 기술
+              required:
+                - companyName
+                - position
+                - description
+                - stack
+            example:
+              companyName: string
+              position: string
+              description: string
+              stack: string
+      responses:
+        '200':
+          description: 채널 생성 성공
+  /recruit/update:
+    put:
+      summary: 채용공고 수정
+      tags:
+        - recruit
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recruitId:
+                  type: string
+                  description: 수정을 원하는 채용공고의 id
+                position:
+                  type: string
+                  description: 채용 포지션
+                description:
+                  type: string
+                  description: 공고 내용
+                stack:
+                  type: string
+                  description: 사용 기술
+              required:
+                - recruitId
+            example:
+              recruitId: string
+              position: string
+              description: string
+              stack: string
+      responses:
+        '200':
+          description: 채용공고 수정
+  /recruit/delete:
+    delete:
+      summary: 채용공고 삭제
+      tags:
+        - recruit
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recruitId:
+                  type: string
+                  description: 삭제를 원하는 채용공고의 id
+              example:
+                recruitId: string
+      responses:
+        '200':
+          description: 채용공고 삭제
+  /recruit/findAll:
+    get:
+      summary: 채용공고 조회
+      tags:
+        - recruit
+      responses:
+        '200':
+          description: 등록된 채용공고 배열
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  example:
+                    회사명: string
+                    지역: string
+                    채용포지션: string
+                    사용기술: string
+  '/recruit/find/{recruitId}':
+    get:
+      summary: 채용공고 상세 조회
+      tags:
+        - recruit
+      parameters:
+        - in: path
+          name: recruitId
+          required: true
+          description: 채용공고 Id
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 채용공고 상세
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  회사명: 샘성
+                  지역: 서울
+                  채용포지션: 백엔드
+                  사용기술: NodeJS
+                  채용상세: 2022_하반기_개발자_채용
+                  회사가올린다른채용공고:
+                    - 채용공고_id
+                    - 채용공고_id
+  '/recruit/search/{keyword}':
+    get:
+      summary: 채용공고 상세 조회
+      tags:
+        - recruit
+      parameters:
+        - in: path
+          name: keyword
+          required: true
+          description: 검색어
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 검색 결과
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  example:
+                    회사명: 샘성
+                    지역: 서울
+                    채용포지션: 백엔드
+                    사용기술: NodeJS
+components:
+  parameters: null
+  schemas:
+    User:
+      type: object
+      required:
+        - _id
+        - name
+      properties:
+        _id:
+          type: string
+          description: uuid
+        name:
+          type: string
+          description: 유저명
+    company:
+      type: object
+      required:
+        - _id
+        - name
+        - region
+      properties:
+        _id:
+          type: string
+          description: uuid
+        name:
+          type: string
+          description: 회사명
+        region:
+          type: string
+          description: 지역
+    recruit:
+      type: object
+      required:
+        - _id
+        - company
+        - position
+        - description
+        - stack
+      properties:
+        _id:
+          type: string
+          description: uuid
+        company:
+          type: object
+          description: 공고를 등록한 회사
+        position:
+          type: string
+          description: 채용포지션
+        description:
+          type: string
+          description: 채용 내용
+        stack:
+          type: string
+          description: 사용 기술
+    apply:
+      type: object
+      required:
+        - _id
+        - userId
+        - recruit
+      properties:
+        _id:
+          type: string
+          description: uuid
+        userId:
+          type: string
+          description: 지원자 id
+        recruitId:
+          type: object
+          description: 지원할 채용공고
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+  responses:
+    BadRequest:
+      description: 잘못된 요청
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            success: false
+            message: 잘못된 요청
+    InternalServerError:
+      description: 서버 에러
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            success: false
+            message: 서버 내부 오류

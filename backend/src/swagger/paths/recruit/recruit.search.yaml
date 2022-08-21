@@ -1,0 +1,26 @@
+get:
+  summary: 채용공고 상세 조회
+  tags:
+    - recruit
+  parameters:
+    - in: path
+      name: keyword
+      required: true
+      description: 검색어
+      schema:
+        type: string
+
+  responses:
+    "200":
+      description: 검색 결과
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              example:
+                회사명: 샘성
+                지역: 서울
+                채용포지션: 백엔드
+                사용기술: NodeJS

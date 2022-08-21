@@ -1,0 +1,26 @@
+get:
+  summary: 채용공고 상세 조회
+  tags:
+    - recruit
+  parameters:
+    - in: path
+      name: recruitId
+      required: true
+      description: 채용공고 Id
+      schema:
+        type: string
+
+  responses:
+    "200":
+      description: 채용공고 상세
+      content:
+        application/json:
+          schema:
+            type: object
+            example:
+              회사명: 샘성
+              지역: 서울
+              채용포지션: 백엔드
+              사용기술: NodeJS
+              채용상세: 2022_하반기_개발자_채용
+              회사가올린다른채용공고: [채용공고_id, 채용공고_id]

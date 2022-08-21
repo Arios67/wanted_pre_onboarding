@@ -1,0 +1,17 @@
+# paths 파일 안의 각 api명세파일들 --> _index.yaml --> openapi.yaml --> build.yaml
+
+/user/apply: # API endpoint
+  $ref: "./user/user.apply.yaml" # api 명세 파일
+
+/recruit/create:
+  $ref: "./recruit/recruit.create.yaml"
+/recruit/update:
+  $ref: "./recruit/recruit.update.yaml"
+/recruit/delete:
+  $ref: "./recruit/recruit.delete.yaml"
+/recruit/findAll:
+  $ref: "./recruit/recruit.findAll.yaml"
+/recruit/find/{recruitId}:
+  $ref: "./recruit/recruit.find.yaml"
+/recruit/search/{keyword}:
+  $ref: "./recruit/recruit.search.yaml"

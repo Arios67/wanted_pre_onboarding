@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: wanted_pre_onboarding API docs
+  description: 백엔드 코스 - 4차 선발과제
+  license:
+    name: MIT
+servers:
+  - url: "http://localhost:3000/"
+paths:
+  $ref: "./paths/_index.yaml"
+components:
+  parameters: null
+  schemas:
+    User:
+      type: object
+      required:
+        - _id
+        - name
+      properties:
+        _id:
+          type: string
+          description: uuid
+        name:
+          type: string
+          description: 유저명
+    company:
+      type: object
+      required:
+        - _id
+        - name
+        - region
+      properties:
+        _id:
+          type: string
+          description: uuid
+        name:
+          type: string
+          description: 회사명
+        region:
+          type: string
+          description: 지역
+    recruit:
+      type: object
+      required:
+        - _id
+        - company
+        - position
+        - description
+        - stack
+      properties:
+        _id:
+          type: string
+          description: uuid
+        company:
+          type: object
+          description: 공고를 등록한 회사
+        position:
+          type: string
+          description: 채용포지션
+        description:
+          type: string
+          description: 채용 내용
+        stack:
+          type: string
+          description: 사용 기술
+    apply:
+      type: object
+      required:
+        - _id
+        - userId
+        - recruit
+      properties:
+        _id:
+          type: string
+          description: uuid
+        userId:
+          type: string
+          description: 지원자 id
+        recruitId:
+          type: object
+          description: 지원할 채용공고
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+  responses:
+    BadRequest:
+      description: 잘못된 요청
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            success: false
+            message: 잘못된 요청
+    InternalServerError:
+      description: 서버 에러
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            success: false
+            message: 서버 내부 오류

@@ -1,0 +1,20 @@
+delete:
+  summary: 채용공고 삭제
+  tags:
+    - recruit
+
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            recruitId:
+              type: string
+              description: 삭제를 원하는 채용공고의 id
+          example:
+            recruitId: string
+
+  responses:
+    "200":
+      description: 채용공고 삭제

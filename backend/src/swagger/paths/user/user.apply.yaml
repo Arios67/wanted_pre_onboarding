@@ -1,0 +1,26 @@
+post:
+  summary: 입사 지원
+  tags:
+    - user
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            recruitId:
+              type: string
+              description: 지원할 채용공고의 id
+            userId:
+              type: string
+              description: 지원자 id
+          required:
+            - recruitId
+            - userId
+        example:
+          recruitId: string
+          userId: string
+
+  responses:
+    "200":
+      description: 입사 지원
