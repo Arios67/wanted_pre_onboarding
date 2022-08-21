@@ -1,7 +1,8 @@
 # wanted_pre_onboarding <br>
 * 사용기술: nodeJS, express, mySQL, typeORM, swagger <br>
 * api-docs : url/api-docs <br>
-* schema : ![ㅅㅋㅁ](https://user-images.githubusercontent.com/81277145/185779461-e46c1941-6ed1-4ca7-9fc0-72450b2c66d5.png) <br><br>
+* schema : <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![ㅅㅋㅁ](https://user-images.githubusercontent.com/81277145/185779461-e46c1941-6ed1-4ca7-9fc0-72450b2c66d5.png) <br><br>
 
 ### 1. 채용공고 등록 <br>
 
